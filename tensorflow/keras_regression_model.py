@@ -54,9 +54,9 @@ model = keras.models.Sequential([
 ])
 
 model.summary()
-model.compile(loss='mean_squared_error',optimizer="sgd")
+model.compile(loss='mean_squared_error',optimizer="sgd")#sgd梯度下降
 callbacks = [
-    keras.callbacks.EarlyStopping(patience=5,min_delta=1e-3)
+    keras.callbacks.EarlyStopping(patience=5,min_delta=1e-4)
 ]
 history = model.fit(x_train_scaled,y_train,validation_data=(x_valid_scaled,y_valid),epochs=100,callbacks=callbacks)
 plot_learning_curves(history)
