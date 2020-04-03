@@ -15,6 +15,12 @@ from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 
 import pprint
+def plot_learning_curves(history):
+    pd.DataFrame(history.history).plot(figsize=(8,5))
+    plt.grid(True)
+    plt.gca().set_ylim(0,1)
+    plt.show()
+
 housing = fetch_california_housing()
 
 print(housing.DESCR)
@@ -52,4 +58,5 @@ model.compile(loss='mean_squared_error',optimizer="sgd")
 callbacks = [
     keras.callbacks.EarlyStopping(patience=5,min_delta=1e-3)
 ]
-model.fit(x_train_scaled,y_train,validation_data=(x_valid_scaled,y_valid),epochs=100)
+history = model.fit(x_train_scaled,y_train,validation_data=(x_valid_scaled,y_valid),epochs=100,callbacks=callbacks)
+plot_learning_curves(history)
