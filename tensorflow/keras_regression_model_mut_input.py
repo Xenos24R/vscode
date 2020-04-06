@@ -48,15 +48,29 @@ x_train_scaled = scaler.fit_transform(x_train)
 x_valid_scaled = scaler.transform(x_valid)
 x_test_scaled = scaler.transform(x_test)
 
-model = keras.models.Sequential([
-    keras.layers.Dense(30,activation='relu',input_shape=x_train.shape[1:]),
-    keras.layers.Dense(1)
-])
+#多输入
+input_wide = keras.layers.Input(shape=[5])
+input_deep = keras.layers.Input(shape=[6])
+hidden1 = keras.layers.Dense(30,activation='relu')(input_deep)
+hidden2 = keras.layers.Dense(30,activation='relu')(hidden1)
+concat = keras.layers.concatenate([input_wide,hidden2])
+output = keras.layers.Dense(1)(concat)
+model = keras.models.Model(inputs=[input_wide,input_deep],outputs=[output]);
 
 model.summary()
 model.compile(loss='mean_squared_error',optimizer="sgd")#sgd梯度下降
 callbacks = [
     keras.callbacks.EarlyStopping(patience=5,min_delta=1e-4)
 ]
-history = model.fit(x_train_scaled,y_train,validation_data=(x_valid_scaled,y_valid),epochs=100,callbacks=callbacks)
+
+#划分集合
+x_train_scaled_wide = x_train_scaled[:,:5]
+x_train_scaled_deep = x_train_scaled[:,2:]
+x_valid_scaled_wide = x_valid_scaled[:,:5]
+x_valid_scaled_deep = x_valid_scaled[:,2:]
+x_test_scaled_wide = x_test_scaled[:,:5]
+x_test_scaled_deep = x_test_scaled[:,2:]
+
+history = model.fit([x_train_scaled_wide,x_train_scaled_deep],y_train,validation_data=([x_valid_scaled_wide,x_valid_scaled_deep],y_valid),epochs=100,callbacks=callbacks)
 plot_learning_curves(history)
+model.evaluate([x_test_scaled_wide,x_test_scaled_deep],y_test)
