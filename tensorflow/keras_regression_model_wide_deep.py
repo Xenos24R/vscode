@@ -1,5 +1,5 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"#强制使用CPU
+#os.environ["CUDA_VISIBLE_DEVICES"] = "-1"#强制使用CPU
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
