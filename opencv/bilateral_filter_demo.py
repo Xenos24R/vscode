@@ -20,14 +20,14 @@ cv.destroyAllWindows()
 
 """
 高斯双边
-cv2.bilateralFilter(src, d, sigmaColor, sigmaSpace[, dst[, borderType]])
+cv2.bilateralFilter(src, d, sigmaColor, sigmaSpace[], dst[], borderType)
     src:输入的图像
     d:滤波直径
     sigmaColor:颜色空间中的标准偏差
     sigmaSpace:协调空间中的标准偏差
 
 均值迁移
-cv2.pyrMeanShiftFiltering(src, sp, sr[, dst[, maxLevel[, termcrit]]])
+cv2.pyrMeanShiftFiltering(src, sp, sr[], dst[], maxLevel[], termcrit)
     src:输入的图像
     sp:空间窗的半径（空间上的范围）
     sr:色彩窗的半径（色彩空间的范围）

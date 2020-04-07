@@ -30,7 +30,7 @@ cv.waitKey(0)
 
 """
 计算直方图
-cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]]):
+cv2.calcHist(images, channels, mask, histSize, ranges[], hist[], accumulate):
     image:输入图像，输入时要写在中括号里
     channels:传入的通道，如果是灰度图像则值为零，如果是彩色图像则对应的是BGR或HSV
     mask:掩膜
@@ -38,7 +38,7 @@ cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]]):
     ranges[]:取值范围，通常是[0,256]，每一个histSize对应ranges中的两个值(min,max)
 
 归一化
-cv2.normalize(src, dst[, alpha[, beta[, norm_type[, dtype[, mask]]]]]):
+cv2.normalize(src, dst[], alpha[], beta[], norm_type[], dtype[], mask):
     src:输入的图像
     dst[]:与src大小相同的输出结果
     alpha[]:
@@ -47,7 +47,7 @@ cv2.normalize(src, dst[, alpha[, beta[, norm_type[, dtype[, mask]]]]]):
     mask:掩膜
 
 直方图反向投影
-cv2.calcBackProject(images, channels, hist, ranges, scale[, dst])
+cv2.calcBackProject(images, channels, hist, ranges, scale[], dst)
     image:输入的图片
     channels:用于计算反向投影的通道列表，通道数必须与直方图维度相匹配
     hist:输入的直方图
