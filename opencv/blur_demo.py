@@ -18,3 +18,30 @@ def custom_blur_demo(image):#自定义滤波，模板总和为1做增强，模�
 src = cv.imread("C:/Users/32936/Desktop/2/1.jpg")
 custom_blur_demo(src)
 cv.waitKey(0)
+
+
+"""
+均值滤波
+cv2.blur(src, ksize[], dst[], anchor[], borderType)
+    src:输入的图像
+    ksize[]:模板大小
+    dst[]:与src大小相同的输出结果
+    anchor[]:锚点，处理的像素位于模板的什么位置
+    borderType:用于推断图像外部像素的某种边界模式
+
+中值滤波
+cv2.medianBlur(src, ksize[], dst)
+    src:输入的图像
+    ksize[]:模板大小
+    dst:与src大小相同的输出结果
+
+卷积运算函数
+cv2.filter2D(src, ddepth, kernel[], dst[], anchor[], delta[], borderType)
+    src:输入的图像
+    ddepth:目标图像深度，当ddepth输入值为-1时，目标图像和原图像深度保持一致。图像深度是指存储每个像素所用的位数，也用于量度图像的色彩分辨率
+    kernel:卷积核
+    dst[]:与src大小相同的输出结果
+    anchor[]:锚点，处理的像素位于模板的什么位置
+    delta[]:在储存目标图像前可选的添加到像素的值，默认值为0
+    borderType:用于推断图像外部像素的某种边界模式
+"""
