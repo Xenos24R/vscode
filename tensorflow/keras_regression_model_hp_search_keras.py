@@ -70,8 +70,11 @@ callbacks = [
 ]
 
 random_search_cv = RandomizedSearchCV(sklearn_model,param_distribution,n_iter=10,n_jobs=1)
-history = random_search_cv.fit(x_train_scaled,y_train,epochs=100,validation_data=(x_valid_scaled,y_valid),callbacks=callbacks)
+random_search_cv.fit(x_train_scaled,y_train,epochs=100,validation_data=(x_valid_scaled,y_valid),callbacks=callbacks)
 
-plot_learning_curves(history)
+print(random_search_cv.best_index_)
+print(random_search_cv.best_params_)
+print(random_search_cv.best_estimator_)
+
 
 
