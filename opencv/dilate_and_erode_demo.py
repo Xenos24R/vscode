@@ -23,3 +23,31 @@ src = cv.imread("G:/openCV/opencv/sources/samples/data/tmpl.png")
 erode_demo(src)
 cv.waitKey(0)
 cv.destroyAllWindows()
+
+
+"""
+定义结构元素
+cv2.getStructuringElement(shape, ksize[], anchor)
+    shape:结构元素的形状（MORPH_RECT，MORPH_CROSS，MORPH_ELLIPSE）
+    ksize:结构元素大小
+    anchor:锚点位置
+    ->retval:结构元素
+
+腐蚀
+cv2.erode(src, kernel[], dst[], anchor[], iterations[], borderType, borderValue)
+    src:输入的图像
+    kernel[]:处理所用的结构元素
+    anchor[]:锚点位置
+    borderType:用于推断图像外部像素的某种边界模式
+    borderValue:边缘值
+    ->dst:与src大小相同的输出结果
+
+膨胀
+cv2.dilate(src, kernel[], dst[], anchor[], iterations[], borderType, borderValue)
+    src:输入的图像
+    kernel[]:处理所用的结构元素
+    anchor[]:锚点位置
+    borderType:用于推断图像外部像素的某种边界模式
+    borderValue:边缘值
+    ->dst:与src大小相同的输出结果
+"""

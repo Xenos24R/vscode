@@ -25,6 +25,7 @@ cv2.bilateralFilter(src, d, sigmaColor, sigmaSpace[], dst[], borderType)
     d:滤波直径
     sigmaColor:颜色空间中的标准偏差
     sigmaSpace:协调空间中的标准偏差
+    ->dst[]:与src大小相同的输出结果
 
 均值迁移
 cv2.pyrMeanShiftFiltering(src, sp, sr[], dst[], maxLevel[], termcrit)
@@ -33,4 +34,5 @@ cv2.pyrMeanShiftFiltering(src, sp, sr[], dst[], maxLevel[], termcrit)
     sr:色彩窗的半径（色彩空间的范围）
     maxLevel:金字塔的最大层数
     termcrit:迭代终止的条件
+    ->dst[]:与src大小相同的输出结果
 """

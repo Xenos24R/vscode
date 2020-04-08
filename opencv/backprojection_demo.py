@@ -36,16 +36,17 @@ cv2.calcHist(images, channels, mask, histSize, ranges[], hist[], accumulate):
     mask:掩膜
     histSize:灰度级个数，输入时需要中括号，如[256]表示有256个灰度级
     ranges[]:取值范围，通常是[0,256]，每一个histSize对应ranges中的两个值(min,max)
+    ->hist[]:直方图
 
 归一化
 cv2.normalize(src, dst[], alpha[], beta[], norm_type[], dtype[], mask):
     src:输入的图像
-    dst[]:与src大小相同的输出结果
     alpha[]:
     beta[]:
     norm_type:NORM_INF,NORM_L1,NORM_L2,,NORM_MINMAX
     mask:掩膜
-
+    ->dst[]:与src大小相同的输出结果
+    
 直方图反向投影
 cv2.calcBackProject(images, channels, hist, ranges, scale[], dst)
     image:输入的图像
@@ -53,4 +54,5 @@ cv2.calcBackProject(images, channels, hist, ranges, scale[], dst)
     hist:输入的直方图
     ranges:直方图每个通道的bin取值范围
     scale[]:可选输出反向投影的比例因子，取值越大反向投影的色度范围就越大
+    ->dst[]:与src大小相同的输出结果
 """
