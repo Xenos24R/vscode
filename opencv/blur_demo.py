@@ -15,7 +15,7 @@ def custom_blur_demo(image):#自定义滤波，模板总和为1做增强，模�
     dst = cv.filter2D(image,-1,kernel)
     cv.imshow("image",dst)
 
-src = cv.imread("C:/Users/32936/Desktop/2/1.jpg")
+src = cv.imread("C:/Users/32936/Desktop/2/lena.png")
 custom_blur_demo(src)
 cv.waitKey(0)
 
