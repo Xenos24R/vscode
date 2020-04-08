@@ -31,3 +31,28 @@ print(tf.constant(np_t))
 t = tf.constant(2.718)
 print(t.numpy)
 print(t.shape)
+
+#Strings
+t = tf.constant("cafe")
+print(t)
+print(tf.strings.length(t))
+print(tf.strings.length(t,unit="UTF8_CHAR"))
+print(tf.strings.unicode_decode(t,"UTF8"))
+
+#string array
+t = tf.constant(["cafe","coffee","咖啡"])
+print(tf.strings.length(t,unit="UTF8_CHAR"))
+r = tf.strings.unicode_decode(t,"UTF-8")
+print(r)
+
+#ragged tensor 不完整的Tensor，各维度长度不相同
+r = tf.ragged.constant([[11,12],[21,22,23],[],[41]])
+#index op
+print(r)
+print(r[1])
+print(r[1:2])
+
+#ops on ragged tensor
+r2 = tf.ragged.constant([[51,52],[],[71]])
+r3 = tf.ragged.constant([[13,14],[15],[],[42,43]])
+print(tf.concat([r,r3],axis=0))
