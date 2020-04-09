@@ -56,3 +56,45 @@ print(r[1:2])
 r2 = tf.ragged.constant([[51,52],[],[71]])
 r3 = tf.ragged.constant([[13,14],[15],[],[42,43]])
 print(tf.concat([r,r3],axis=0))
+
+#raggedtensor to tensor
+print(r.to_tensor())
+#sparse tensor
+s = tf.SparseTensor(indices=[[0,1],[1,0],[2,3]],values=[1.,2.,3.],dense_shape=[3,4])
+print(s)
+print(tf.sparse.to_dense(s))
+
+#ops on sparse tensor
+s2 = s*2.0
+print(s2)
+#无法执行加法
+try:
+    s3 = s+1
+except TypeError as ex:
+    print(ex)
+
+s4 = tf.constant([
+                    [10.,20.],
+                    [30.,40.],
+                    [50.,60.],
+                    [70.,80.]])
+print(tf.sparse.sparse_dense_matmul(s,s4))
+
+#sparse tensor indices unorder
+s5 = tf.SparseTensor(indices=[[0,2],[0,1],[2,3]],values=[1.,2.,3.],dense_shape=[3,4])
+print(s5)
+s6 = tf.sparse.reorder(s5)
+print(tf.sparse.to_dense(s6))
+
+#variables
+v = tf.Variable([[1.,2.,3.],[4.,5.,6.]])
+print(v.value())
+print(v.numpy())
+
+#assign value
+v.assign(2*v)
+print(v.numpy())
+v[0,1].assign(42)
+print(v.numpy())
+v[1].assign([7.,8.,9.])
+print(v.numpy())
